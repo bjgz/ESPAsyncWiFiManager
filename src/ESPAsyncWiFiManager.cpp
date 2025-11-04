@@ -614,7 +614,7 @@ boolean AsyncWiFiManager::startConfigPortal(char const *apName, char const *apPa
     //  we should do a scan every so often here and
     //  try to reconnect to AP while we are at it
     //
-    if (scannow == 0 || millis() - scannow >= 10000)
+    if (scannow == 0 || millis() - scannow >= 30000)
     {
       DEBUG_WM(F("About to scan()"));
       shouldscan = true; // since we are modal, we can scan every time
