@@ -651,12 +651,13 @@ boolean AsyncWiFiManager::startConfigPortal(char const *apName, char const *apPa
     if (connect)
     {
       connect = false;
-      delay(2000);
+      delay(1000);   // BG - was 2000?
       DEBUG_WM(F("Connecting to new AP"));
 
       // using user-provided _ssid, _pass in place of system-stored ssid and pass
       WiFi.persistent(true);
-      if (_tryConnectDuringConfigPortal and connectWifi(_ssid, _pass) == WL_CONNECTED)
+      // if (_tryConnectDuringConfigPortal and connectWifi(_ssid, _pass) == WL_CONNECTED)
+      if (connectWifi(_ssid, _pass) == WL_CONNECTED)
       {
         WiFi.persistent(false);
         // connected
@@ -1052,7 +1053,7 @@ void AsyncWiFiManager::handleWifi(AsyncWebServerRequest *request, boolean scan)
 // handle the WLAN save form and redirect to WLAN config page again
 void AsyncWiFiManager::handleWifiSave(AsyncWebServerRequest *request)
 {
-  DEBUG_WM(F("WiFi save"));
+  DEBUG_WM(F("WiFi save handler"));
 
   // SAVE/connect here
   needInfo = true;
