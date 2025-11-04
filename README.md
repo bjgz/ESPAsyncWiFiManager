@@ -1,14 +1,14 @@
-# AsyncWiFiManager
-ESP8266 Async WiFi Connection manager with fallback web configuration portal
+# ESPAsyncWiFiManager
+ESP32 Async WiFi Connection manager with fallback web configuration portal
 
-> [!NOTE]
+> [!NOTE (bjgz)]
+> This is likely the 200th fork of this library, this time to address the excessive number of WiFi scans that are performed while the config portal is active. Scans can take several seconds and the device attempting to configure the ESP board is left hanging (and will likely disconnect) far too often. Other tweaks will be added as they are needed.
+> My thanks to out to all the previous contributors to this awesome library. 
+
+> [!NOTE (ShVerni)]
 > This version is forked form the original to try and fix issues with the ESP32C3. The [filter functions](https://github.com/alanswx/ESPAsyncWiFiManager/blob/master/src/ESPAsyncWiFiManager.cpp#L168) always seem to return false on the C3 for some reason. A custom version of that filter is used in this library, and no other changes have been made. This should still work with all the other ESP32/8266 devices the original library worked with. __This is a quick and dirty fix and may have other consequences that haven't been discovered yet.__
 
 The configuration portal is of the captive variety, so on various devices it will present the configuration dialogue as soon as you connect to the created access point.
-
-First attempt at a library. Lots more changes and fixes to do. Contributions are welcome.
-
-#### This works with the ESP8266 Arduino platform with a recent stable release(2.0.0 or newer) https://github.com/esp8266/Arduino
 
 ## Contents
  - [How it works](#how-it-works)
@@ -41,7 +41,7 @@ First attempt at a library. Lots more changes and fixes to do. Contributions are
 - ESP will try to connect. If successful, it relinquishes control back to your app. If not, reconnect to AP and reconfigure.
 
 ## How It Looks
-![ESP8266 WiFi Captive Portal Homepage](http://i.imgur.com/YPvW9eql.png) ![ESP8266 WiFi Captive Portal Configuration](http://i.imgur.com/oicWJ4gl.png)
+![ESP32 WiFi Captive Portal Homepage](http://i.imgur.com/YPvW9eql.png) ![ESP32 WiFi Captive Portal Configuration](http://i.imgur.com/oicWJ4gl.png)
 
 ## Wishlist
 - ~~remove dependency on EEPROM library~~
@@ -61,8 +61,7 @@ First attempt at a library. Lots more changes and fixes to do. Contributions are
 You can either install through the Arduino Library Manager or checkout the latest changes or a release from github
 
 #### Install through Library Manager
-__Currently version 0.8+ works with release 2.0.0 or newer of the [ESP8266 core for Arduino](https://github.com/esp8266/Arduino)__
- - in Arduino IDE got to Sketch/Include Library/Manage Libraries
+ - in Arduino IDE go to Sketch/Include Library/Manage Libraries
   ![Manage Libraries](http://i.imgur.com/9BkEBkR.png)
 
  - search for WiFiManager
@@ -71,7 +70,6 @@ __Currently version 0.8+ works with release 2.0.0 or newer of the [ESP8266 core 
  - click Install and start [using it](#using)
 
 ####  Checkout from github
-__Github version works with release 2.0.0 or newer of the [ESP8266 core for Arduino](https://github.com/esp8266/Arduino)__
 - Checkout library to your Arduino libraries folder
 
 ### Using
