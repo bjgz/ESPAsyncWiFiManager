@@ -109,8 +109,6 @@ void AsyncWiFiManager::addParameter(AsyncWiFiManagerParameter *p)
 
 void AsyncWiFiManager::setupConfigPortal()
 {
-  // dnsServer.reset(new DNSServer());
-  // server.reset(new ESP8266WebServer(80));
   server->reset();
 
   DEBUG_WM(F(""));
@@ -122,7 +120,7 @@ void AsyncWiFiManager::setupConfigPortal()
   {
     if (strlen(_apPassword) < 8 || strlen(_apPassword) > 63)
     {
-      // fail passphrase to short or long!
+      // Fail passphrase, too short or too long!
       DEBUG_WM(F("Invalid AccessPoint password. Ignoring"));
       _apPassword = NULL;
     }
@@ -145,11 +143,11 @@ void AsyncWiFiManager::setupConfigPortal()
     WiFi.softAP(_apName);
   }
 
-  delay(500); // without delay I've seen the IP address blank
+  delay(500); // Without this delay, I've seen the IP address blank
   DEBUG_WM(F("AP IP address: "));
   DEBUG_WM(WiFi.softAPIP());
 
-// setup the DNS server redirecting all the domains to the apIP
+  // Setup the DNS server redirecting all the domains to the apIP
 #ifdef USE_EADNS
   dnsServer->setErrorReplyCode(AsyncDNSReplyCode::NoError);
 #else
@@ -898,11 +896,6 @@ void AsyncWiFiManager::setBreakAfterConfig(boolean shouldBreak)
 // handle root or redirect to captive portal
 void AsyncWiFiManager::handleRoot(AsyncWebServerRequest *request)
 {
-  // AJS - maybe we should set a scan when we get to the root???
-  // and only scan on demand? timer + on demand? plus a link to make it happen?
-
-  shouldscan = true;
-  scannow = 0;
   DEBUG_WM(F("Handle root"));
 
   if (captivePortal(request))
