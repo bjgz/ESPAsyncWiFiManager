@@ -1,7 +1,7 @@
 {
   "name": "ESPAsyncWiFiManager",
   "keywords": "wifi, wi-fi",
-  "description": "ESP32 Async WiFi Connection manager with fallback web configuration portal",
+  "description": "ESP32 Async WiFi Connection Manager with configuration portal",
   "repository":
   {
     "type": "git",
@@ -11,5 +11,6 @@
   "platforms": ["espressif32"],
   "version": "0.1"
 }
+
 
 
