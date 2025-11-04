@@ -5,9 +5,10 @@
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/ShVerni/ESPAsyncWiFiManager"
+    "url": "https://github.com/bjgz/ESPAsyncWiFiManager"
   },
   "frameworks": "arduino",
   "platforms": ["espressif8266", "espressif32"],
-  "version": "0.32"
+  "version": "0.1"
 }
+
